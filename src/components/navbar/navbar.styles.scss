@@ -1,0 +1,89 @@
+@import '../../sass/base';
+
+$navbar-height: 80px;
+$menu-width: 155px;
+
+.navbar {
+    display: flex;
+    align-items: center;
+    height: $navbar-height;
+    background-color: $secondary-color;
+    color: $main-color;
+    padding: 0 $spacing-large;
+    font-size: $font-large;
+    z-index: 1;
+
+    .logo {
+        display: flex;
+        cursor: pointer;   
+        margin-right: auto;
+
+        .logo-text {
+            line-height: 1;
+            margin-right: $spacing-smallest;
+        }
+
+        .logo-icon {
+            margin: auto 0;
+            font-size: $font-largest;
+        }
+    }
+
+    .menu {
+        display: grid;
+        height: 100%;
+        background-color: $secondary-color;
+        grid-template-columns: repeat(5, $menu-width);    
+        margin-right: $spacing-larger;
+
+        @media screen and (max-width: $base-mobile-width) {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: auto;
+            position: absolute;
+            left: 0;
+            top: $navbar-height;
+            margin-right: 0;
+            opacity: 0;
+
+            &.active {            
+                transition: all 0.3s ease;    
+                opacity: 1;               
+            }
+        }
+
+        .link {
+            color: $main-color;
+            text-align: center;
+            text-decoration: none;
+            padding: ($navbar-height - $font-large) / 2 $spacing-larger;
+
+            @media screen and (max-width: $base-mobile-width) {
+                text-align: center;
+                margin: 0;
+                padding: $spacing-largest;
+                width: 100%;
+            }
+
+            &:hover {
+                background-color: $stroke-color;
+                transition: all 0.2s ease-out;
+            }
+        }
+
+        .sign-up {
+            background-color: $tertiary-color;
+        }
+    }
+
+    .menu-icon {
+        display: none;
+        cursor: pointer;
+        font-size: $font-largest;
+
+        @media screen and (max-width: $base-mobile-width) {
+            display: block;
+        }
+    }
+}
